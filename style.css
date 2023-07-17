@@ -283,3 +283,90 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+/*----------faq------------*/
+.faq {
+  text-align: center;
+  font-size: 18px;
+  padding: 4.5rem 12%;
+}
+
+.faq__heading {
+  font-size: 2.5em;
+  font-weight: 900;
+}
+
+.faq__accordion {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.faq__item {
+  list-style: none;
+  width: 100%;
+  text-indent: 0;
+  margin: 0 0 0.5rem 0;
+}
+
+.faq__btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 1px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgb(45, 45, 45);
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.faq__btn::after {
+  content: "+";
+  position: absolute;
+  font-size: 4rem;
+  font-weight: 200;
+  right: 2rem;
+  transition: transform 0.01s linear;
+}
+
+.faq__accordion input[type="checkbox"] {
+  display: none;
+}
+
+.faq__content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: rgb(45, 45, 45);
+  line-height: 1.25;
+  max-height: 0; /* hide content */
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
+}
+
+.faq__accordion input[type="checkbox"]:checked ~ .faq__content {
+  max-height: 100%;
+}
+
+.faq__accordion input[type="checkbox"]:checked ~ .faq__btn::after {
+  transform: rotate(45deg);
+}
+
+.faq__text {
+  width: 100%;
+  max-width: 1080px;
+  padding: 2rem 2rem 2rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.faq__text:first-of-type {
+  padding: 2rem 2rem 0.7rem;
+}
