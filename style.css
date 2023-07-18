@@ -58,6 +58,31 @@ body {
   align-items: center;
 }
 
+.lang-btn {
+  display: flex;
+  place-items: center;
+  position: relative;
+  border: 1px solid rgba(128, 128, 128, 0.7);
+  background: transparent;
+  border-radius: 4px;
+  margin-right: 25px;
+  min-height: 30px;
+  text-align: center;
+  z-index: 3;
+}
+
+.lang-btn select {
+  appearance: none;
+  border: 0;
+  min-width: auto;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .btn-primary {
   display: inline-flex;
   border-radius: 4px;
@@ -76,6 +101,8 @@ body {
   padding: 7px 20px;
   background: #db0001;
   color: #fff;
+  font-weight: 600;
+  font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
@@ -85,13 +112,24 @@ body {
   background: rgb(193, 17, 25);
 }
 
+.btn {
+  display: inline-flex;
+  margin-left: 8px;
+  padding: 15px 20px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
 .navbar__down-icon {
-  width: 10px;
+  position: absolute;
+  right: 5px;
   margin-left: 15px;
+  z-index: -1;
 }
 
 .navbar__lang-icon {
-  margin-right: 8px;
+  position: absolute;
+  left: 7px;
 }
 
 .navbar__login-btn {
@@ -128,13 +166,13 @@ body {
   line-height: 1.875rem;
 }
 
-.header__form {
+.form {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.header__input {
+.form__input {
   display: inline-flex;
   padding: 15px 20px;
   border-radius: 4px;
@@ -148,7 +186,7 @@ body {
   position: relative;
 }
 
-.header__input::placeholder {
+.form__input::placeholder {
   position: absolute;
   left: 15px;
   bottom: 10px;
@@ -156,22 +194,14 @@ body {
   transition: transform 0.2s ease-out;
 }
 
-.header__input:focus::placeholder {
-  transform: translateY(-100%) scale(0.9);
+.form__input:focus::placeholder {
+  transform: translateY(-100%) scale(1);
   font-size: 13px;
-  bottom: 15px
+  margin-bottom: 10px;
 }
 
-.header__input:focus {
+.form__input:focus {
   border: 1px solid #fff;
-}
-
-.header__btn {
-  display: inline-flex;
-  margin-left: 8px;
-  padding: 15px 20px;
-  font-weight: 500;
-  font-size: 20px;
 }
 
 .divider {
@@ -288,7 +318,7 @@ body {
 .faq {
   text-align: center;
   font-size: 18px;
-  padding: 4.5rem 12%;
+  padding: 2.5rem 12%;
 }
 
 .faq__heading {
@@ -313,7 +343,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 2rem;
+  padding: 30px;
   margin-bottom: 1px;
   color: #fff;
   font-size: 1.5rem;
@@ -323,6 +353,7 @@ body {
   border: none;
   outline: none;
   position: relative;
+  transition: all ease-in-out .3s
 }
 
 .faq__btn::after {
@@ -331,10 +362,10 @@ body {
   font-size: 4rem;
   font-weight: 200;
   right: 2rem;
-  transition: transform 0.01s linear;
+  transition: transform 0.25s linear;
 }
 
-.faq__accordion input[type="checkbox"] {
+.faq__accordion input[type="radio"] {
   display: none;
 }
 
@@ -346,27 +377,111 @@ body {
   line-height: 1.25;
   max-height: 0; /* hide content */
   overflow: hidden;
-  transition: max-height 0.25s ease-in-out;
+  padding: 0 30px;
+  transition: max-height 0.5s ease-in-out, padding 0.5s, background-color 0.1s ease;
+}
+.faq__btn:hover {
+  background-color: gray;
 }
 
-.faq__accordion input[type="checkbox"]:checked ~ .faq__content {
-  max-height: 100%;
+.faq__accordion input[type="radio"]:checked ~ .faq__content {
+  max-height: 600px;
+  padding: 30px 30px;
 }
 
-.faq__accordion input[type="checkbox"]:checked ~ .faq__btn::after {
+.faq__accordion input[type="radio"]:checked ~ .faq__btn::after {
   transform: rotate(45deg);
 }
 
 .faq__text {
   width: 100%;
   max-width: 1080px;
-  padding: 2rem 2rem 2rem;
   color: #fff;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.3;
 }
 
-.faq__text:first-of-type {
-  padding: 2rem 2rem 0.7rem;
+.faq__text:first-child {
+  padding-bottom: 15px;
+}
+
+.faq__lead-container {
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+  padding: 2.5rem 12%;
+}
+
+.faq__lead-heading {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  text-align: left;
+  color: rgba(255,255,255,0.7);
+  width: 100%;
+  max-width: 1080px;
+  padding: 2.5rem 12%;
+  font-size: 14px;
+}
+
+.footer a {
+  color: rgba(255,255,255,0.7);
+
+}
+
+.footer__questions {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1080px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+}
+
+.footer__content {
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1080px;
+  margin: 20px 0;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__item {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 1.3rem;
+  padding: 0;
+}
+
+.footer__link:hover {
+  color: #fff;
+}
+
+.footer__link:active {
+  color: #db0001;
+}
+
+.footer__lang-container {
+  max-width: 150px;
+  margin-bottom: 20px;
 }
